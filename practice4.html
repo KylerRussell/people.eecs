@@ -1,0 +1,62 @@
+<?php
+  // Check if form is submitted and get the number
+  if (isset($_POST['number'])) {
+    $num = intval($_POST['number']);
+  } else {
+    $num = 0;
+  }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PHP Multiplication Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .form-container {
+      text-align: center;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <form method="post" action="">
+      <label for="number">Enter a number:</label>
+      <input type="number" id="number" name="number" min="1" required>
+      <input type="submit" value="Generate Table">
+    </form>
+  </div>
+
+  <?php if ($num > 0): ?>
+  <table>
+    <tr>
+      <th></th>
+      <?php for ($i = 1; $i <= $num; $i++): ?>
+        <th><?php echo $i; ?></th>
+      <?php endfor; ?>
+    </tr>
+    <?php for ($row = 1; $row <= $num; $row++): ?>
+    <tr>
+      <th><?php echo $row; ?></th>
+      <?php for ($col = 1; $col <= $num; $col++): ?>
+        <td><?php echo $row * $col; ?></td>
+      <?php endfor; ?>
+    </tr>
+    <?php endfor; ?>
+  </table>
+  <?php endif; ?>
+</body>
+</html>
